@@ -18,6 +18,27 @@
 		<java.version>11</java.version>
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>prod</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<embed.mongo.scope>test</embed.mongo.scope>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<embed.mongo.scope>compile</embed.mongo.scope>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,7 +68,7 @@
 		<dependency>
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
-			<scope>test</scope>
+			<scope>${embed.mongo.scope}</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor</groupId>
