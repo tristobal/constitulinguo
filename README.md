@@ -18,3 +18,7 @@ docker run --rm --name local-mongo -p 27017:27017 mongo
 ```shell
 ./mvnw clean package && java -jar -Dspring.profiles.active=dev target/*.jar
 ```
+
+#### Fuentes
+<sup><sup>https://blog.knoldus.com/spring-webflux-testing-your-router-functions-with-webtestclient/
+https://developer.okta.com/blog/2018/09/24/reactive-apis-with-spring-webflux</sup></sup>
