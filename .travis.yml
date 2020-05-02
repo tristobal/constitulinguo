@@ -1,15 +1,16 @@
 language: java
 jdk:
   - oraclejdk11
-addons:
-  sonarcloud:
-    organization: "wakul"
-    token:
-      secure: "ff322667e0f328b330974352f8f64842afbfb369"
+#addons:
+#  sonarcloud:
+#    organization: "wakul"
+#    token:
+#      secure: "ff322667e0f328b330974352f8f64842afbfb369"
 deploy:
   provider: heroku
   api-key:
     secure: $HEROKU_API_KEY
   app: constitulinguo
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=tristobal_constitulinguo -Dspring.profiles.active=prod -Dmongo_user=$mongo_user -Dmongo_pass=$mongo_pass -Dmongo_host=$mongo_host -Dmongo_port=$mongo_port
+  - mvn clean package -Dspring.profiles.active=prod -Dmongo_user=$mongo_user -Dmongo_pass=$mongo_pass -Dmongo_host=$mongo_host -Dmongo_port=$mongo_port
+#  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=tristobal_constitulinguo -Dspring.profiles.active=prod -Dmongo_user=$mongo_user -Dmongo_pass=$mongo_pass -Dmongo_host=$mongo_host -Dmongo_port=$mongo_port
