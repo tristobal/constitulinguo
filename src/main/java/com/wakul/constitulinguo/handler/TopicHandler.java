@@ -4,6 +4,7 @@ import com.wakul.constitulinguo.domain.Topic;
 import com.wakul.constitulinguo.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
@@ -60,4 +61,63 @@ public class TopicHandler {
                 .switchIfEmpty(notFound().build());
     }
 
+    public Mono<ServerResponse> getQuestionRightAnswer(ServerRequest request) {
+        String response = "[\n" +
+                "\t{\n" +
+                "\t\t\"questionNo\": 1,\n" +
+                "\t\t\"question\": \"¿Cómo se escribe el número 1?\",\n" +
+                "\t\t\"rightans\": \"optiona\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"questionNo\": 1,\n" +
+                "\t\t\"question\": \"¿Cuál es la tercera letra del abecedario?\",\n" +
+                "\t\t\"rightans\": \"optionc\"\n" +
+                "\t}\n" +
+                "]";
+        return ok()
+                .contentType(APPLICATION_JSON)
+                .body(BodyInserters.fromValue(response));
+    }
+
+    public Mono<ServerResponse> getLevelInfo(ServerRequest request) {
+        String response = "[\n" +
+                "\t{\n" +
+                "\t\t\"lelveno\": 1,\n" +
+                "\t\t\"levelname\": \"Nivel 1\"\n" +
+                "\t\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"lelveno\": 2,\n" +
+                "\t\t\"levelname\": \"Nivel 2\"\n" +
+                "\t\n" +
+                "\t}\t\n" +
+                "]";
+        return ok()
+                .contentType(APPLICATION_JSON)
+                .body(BodyInserters.fromValue(response));
+    }
+
+    public Mono<ServerResponse> questionBankUrl(ServerRequest request) {
+        String response = "[\n" +
+                "\t{\n" +
+                "\t\t\"question\": \"¿Cómo se escribe el número 1?\"\n" +
+                "\t\t\"optiona\": \"Uno\",\n" +
+                "\t\t\"optionb\": \"Dos\",\n" +
+                "\t\t\"optionc\": \"Tres\",\n" +
+                "\t\t\"optiond\": \"Cuatro\",\n" +
+                "\t\t\"rightans\": \"A\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"question\": \"¿Cuál es la tercera letra del abecedario?\"\n" +
+                "\t\t\"optiona\": \"A\",\n" +
+                "\t\t\"optionb\": \"B\",\n" +
+                "\t\t\"optionc\": \"C\",\n" +
+                "\t\t\"optiond\": \"D\",\n" +
+                "\t\t\"rightans\": \"C\"\n" +
+                "\t}\n" +
+                "]";
+        return ok()
+                .contentType(APPLICATION_JSON)
+                .body(BodyInserters.fromValue(response));
+    }
 }

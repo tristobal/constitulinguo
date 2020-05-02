@@ -31,6 +31,9 @@ public class TopicRouter {
                 .andRoute(GET("/topics/{id}").and(accept(APPLICATION_JSON)), handler::get)
                 .andRoute(POST("/topics").and(accept(APPLICATION_JSON)), handler::save)
                 .andRoute(PUT("/topics/{id}").and(accept(APPLICATION_JSON)), handler::put)
-                .andRoute(DELETE("/topics/{id}").and(accept(APPLICATION_JSON)), handler::delete);
+                .andRoute(DELETE("/topics/{id}").and(accept(APPLICATION_JSON)), handler::delete)
+                .andRoute(GET("/get_question_right_answare").and(accept(APPLICATION_JSON)), handler::getQuestionRightAnswer)
+                .andRoute(GET("/get_level_info").and(accept(APPLICATION_JSON)), handler::getLevelInfo)
+                .andRoute(GET("/question_bank_url").and(accept(APPLICATION_JSON)), handler::getQuestionRightAnswer);
     }
 }
