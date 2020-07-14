@@ -20,10 +20,10 @@ public class Question {
     @NotBlank
     public String description;
 
-    @NotBlank
+    @NotEmpty
     public List<Alternative> alternatives;
 
-    @NotEmpty
+    @NotBlank
     public Answer answer;
 
 }
