@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Answer {
+public class Alternative {
 
     public Integer id;
-    public String reason;
+    public String text;
+
 }

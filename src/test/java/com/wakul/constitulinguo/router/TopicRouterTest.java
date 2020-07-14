@@ -1,5 +1,6 @@
 package com.wakul.constitulinguo.router;
 
+import com.wakul.constitulinguo.domain.Alternative;
 import com.wakul.constitulinguo.domain.Answer;
 import com.wakul.constitulinguo.domain.Question;
 import com.wakul.constitulinguo.domain.Topic;
@@ -46,10 +47,13 @@ class TopicRouterTest {
 
     @Test
     public void testGetTopicById() {
-        List<Answer> answers = Arrays.asList(
-                new Answer("1", "Respuesta Verdadera", Boolean.TRUE),
-                new Answer("2", "Respuesta Falsa", Boolean.FALSE));
-        List<Question> questions = Collections.singletonList(new Question("1", "Pregunta", answers));
+        List<Alternative> alternatives = Arrays.asList(
+                new Alternative(1, "Respuesta Verdadera"),
+                new Alternative(2, "Respuesta Falsa")
+        );
+        Answer answer = new Answer(1, "Respuesta Verdadera");
+
+        List<Question> questions = Collections.singletonList(new Question(1, "Pregunta", alternatives, answer));
         Topic topic = new Topic("1", "Tema", questions);
 
         Mono<Topic> topicMono = Mono.just(topic);
@@ -70,10 +74,13 @@ class TopicRouterTest {
 
     @Test
     public void testCreateTopic() {
-        List<Answer> answers = Arrays.asList(
-                new Answer("1", "Respuesta Verdadera", Boolean.TRUE),
-                new Answer("2", "Respuesta Falsa", Boolean.FALSE));
-        List<Question> questions = Collections.singletonList(new Question("1", "Pregunta", answers));
+        List<Alternative> alternatives = Arrays.asList(
+                new Alternative(1, "Respuesta Verdadera"),
+                new Alternative(2, "Respuesta Falsa")
+        );
+        Answer answer = new Answer(1, "Respuesta Verdadera");
+
+        List<Question> questions = Collections.singletonList(new Question(1, "Pregunta", alternatives, answer));
         Topic topic = new Topic("1", "Tema", questions);
 
         Mono<Topic> topicMono = Mono.just(topic);

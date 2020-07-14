@@ -15,12 +15,15 @@ import java.util.List;
 public class Question {
 
     @Id
-    public String id;
+    public Integer id;
 
     @NotBlank
     public String description;
 
+    @NotBlank
+    public List<Alternative> alternatives;
+
     @NotEmpty
-    public List<Answer> answers;
+    public Answer answer;
 
 }
